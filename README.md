@@ -1,52 +1,47 @@
+<a href="https://colab.research.google.com/github/uzusio/whisper_tool.ipynb/blob/main/whisper_tool.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 # 音声文字起こしツール for whisper
 
-<a href="https://colab.research.google.com/github/uzusio/whisper_tool.ipynb/blob/main/whisper_tool.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 ---
 
 
 ## 概要
-OpenAIの[whisper](https://github.com/openai/whisper)を使用した音声文字起こしツールです。
-Google Colabの無料環境で利用可能です。
+OpenAIの[whisper](https://github.com/openai/whisper)を使用した音声文字起こしツールです。Google Colabの無料環境で動作し、簡単な初期設定だけで高精度な文字起こしが可能です。
+
 
 ---
 
 
 ## 使い方
 
-1. 編集 -> ノートブックの設定 -> ハードウェア アクセラレータ から「T4 GPU」を選択してください。
-2. `DIR_PATH`に作業フォルダのパスを指定してください。
-    1. Colabのデフォルトのディレクトリは`/content`です。
-    2. Driveをマウントして`/content/drive/MyDrive`以下からDrive上のディレクトリを指定できます。
-    3. メディアファイルを左ペインのColab環境にドラッグドロップして使用することもできます。
-3. 初期設定を入力してください。
-    1. `DIR_PATH`: 文字起こしをする音声ファイルを配置するディレクトリです。文字起こしされたテキストファイルも同ディレクトリに出力されます。
-        - 例: `/content`
-    2. `INPUT_TYPE`: `ファイルから読み込み`, `URLから読み込み`に対応しています。
-    3. `INPUT_FILE`: `ファイルから読み込み`の場合、文字起こしするファイル名を記入してください。
-        - 例: `hogehoge.mp3`, `fugafuga.mkv`
-    4. `INPUT_URL`: `URLから読み込み`の場合、文字起こしするメディアのURLを記入してください。
-    5. `MODEL_TYPE`: 文字起こしの精度を選びます。「T4 GPU」でも動作しますので最高品質モデルの`large-v3`をお勧めします。
-    6. `srt_output`: 字幕ファイル生成に対応しました。出力ファイルを字幕ファイル形式にしたい場合はチェックを入れてください。
-4. 以降のセルを最後まで実行してください。ランタイム -> 以降のセルを実行でもOKです。
+1.   編集->ノートブックの設定->ハードウェア アクセラレータ から「T4 GPU」を選択してください
 
+2.   初期設定を入力してください
+     - **INPUT_MEDIA_PATH**:  
+       - `ファイルから読み込み`: 対象ファイルのパスを記入（例: `/content/hogehoge.mp3`）。  
+       - `URLから読み込み`: 動画や音声のURLを記入（例: `http://example.com/video`）。  
+     - **MODEL_TYPE**:  
+       文字起こしの精度を指定します。高精度な`large-v3`を推奨。  
+     - **srt_output**:  
+       字幕ファイル（.srt形式）の生成を有効化したい場合にチェックを入れてください。
+
+3. **セルを実行**
+   - 初期設定を入力後、以降のセルを上から順に実行してください。または「ランタイム」→「以降のセルを実行」でまとめて実行可能です。
 
 ## リリースノート
 
-### 2023.1.13
-- マイクからの入力機能を追加
-
-- Google翻訳とPapago翻訳を追加
-
-- web上の動画をダウンロードする機能を追加
+### 2024.11.19
+- UIを修正
+- 一部ライブラリのバージョンを固定
+- URLから動画をダウンロードできるように修正
 
 ### 2024.3.5
+- Whisperを**faster-whisper**に切り替え、高速化。
+- Papago翻訳APIの仕様変更に伴い一時的に選択肢から削除。
+- マイク入力機能を削除。
 
-- faster-whisperに切り替え
-
-- Papagoの翻訳APIがNaver Cloudに移ったため一旦選択肢から消去
-
-- マイク入力を削除
-
-### 2024.6.24
-
-- バグ修正
+### 2023.1.13
+- マイクからの入力機能を追加。
+- Google翻訳およびPapago翻訳を追加。
+- Web上の動画をダウンロードする機能を追加。
